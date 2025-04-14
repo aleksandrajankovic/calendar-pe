@@ -2071,6 +2071,13 @@ footer {
     font-size: 20px !important;
     line-height: 22px !important;
   }
+  .header-flex {
+    padding: 15px 20px;
+  }
+  .header-flex h2 {
+    font-size: 20px;
+    line-height: 22px;
+  }
 }
 
 @media (max-width: 376px) {
