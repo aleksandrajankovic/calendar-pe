@@ -18,18 +18,6 @@ const giftImages = [
   "img/icon14.png",
   "img/icon15.png",
   "img/icon16.png",
-  "img/icon17.png",
-  "img/icon18.png",
-  "img/icon19.png",
-  "img/icon20.png",
-  "img/icon21.png",
-  "img/icon22.png",
-  "img/icon23.png",
-  "img/icon24.png",
-  "img/icon25.png",
-  "img/icon26.png",
-  "img/icon27.png",
-  "img/icon28.png",
 ];
 
 
@@ -39,7 +27,7 @@ const promotionEndDate = new Date(2025, 4, 4);
 
 let currentImageIndex = 0;
 window.onload = function () {
-  const today = new Date(2025, 3, 30);
+  const today = new Date(2025,3,30);
 const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
 
@@ -137,6 +125,8 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 }
 
 function updateCalendarStates(month, year) {
+  // Resetujemo currentImageIndex pre obrade dani u kalendaru
+  currentImageIndex = 0;
 
   const today = new Date(2025, 3, 30); 
   const target = $("#calendar .week .day");
@@ -144,7 +134,6 @@ function updateCalendarStates(month, year) {
   target.each(function () {
     const dayNumber = parseInt($(this).data("day"), 10);
     const cellMonth = parseInt($(this).data("month"), 10);
-
     const cellDate = new Date(year, cellMonth, dayNumber);
     const giftElement = $(this);
 
@@ -163,11 +152,11 @@ function updateCalendarStates(month, year) {
       return;
     }
 
-
     const promo = getPromotionForDate(cellDate, promotionStartDate, promotionEndDate);
     if (promo) {
       if (giftElement.find(".surprise").html().trim() !== "") {
         giftElement.addClass("gift-open");
+        // Dodeljujemo ikonicu iz niza giftImages redom
         if (currentImageIndex < giftImages.length) {
           const currentImage = giftImages[currentImageIndex];
           giftElement.css({
@@ -176,7 +165,7 @@ function updateCalendarStates(month, year) {
             "background-size": "contain",
             "background-position": "center",
           });
-          currentImageIndex++; 
+          currentImageIndex++;  // Povećavamo brojač za sledeću ikonicu
         }
       }
       giftElement.data("promo", promo);
@@ -188,7 +177,6 @@ function updateCalendarStates(month, year) {
     }
   });
 
-
   $(".day").click(function () {
     if ($(this).hasClass("future") || $(this).hasClass("no-click")) return;
     const promo = $(this).data("promo");
@@ -197,21 +185,16 @@ function updateCalendarStates(month, year) {
       return;
     }
     
-    // Izvlačenje podataka o datumu iz data atributa
     const dayNumber = $(this).data("day");
     const monthNumber = $(this).data("month");
     const yearNumber = $(this).data("year");
     const cellDate = new Date(yearNumber, monthNumber, dayNumber);
-    
-    // Formatiranje datuma u željenom formatu, npr. "30. april 2025"
     const formattedDate = cellDate.toLocaleDateString("sr-RS", { day: "numeric", month: "numeric", year: "numeric" });
     
-    // Generisanje popup sadržaja sa ispisanim datumom
     const popupContent = `
       <div class="header-flex ${promo.headerClass ? promo.headerClass : ''}">
-      <h6 class="date">${formattedDate}</h6>
+        <h6 class="date">${formattedDate}</h6>
         <h2><i>${promo.title}</i></h2>
-        
       </div>
       <ul class="list-top">
         <h3>${promo.subtitle}</h3>
@@ -243,11 +226,11 @@ function updateCalendarStates(month, year) {
       </ul>
       <a href="${promo.link}" class="promo-link">${promo.button}</a>
     `;
-    $("#modal .wrapper .content .box").html(popupContent);
-    let bgSize = "contain";
-    let paddingVal = ""; // podrazumevano, bez paddinga
     
-    // Ako je uređaj mobilni i element ima klasu 'left'
+    $("#modal .wrapper .content .box").html(popupContent);
+    let bgSize = "cover";
+    let paddingVal = "";
+    
     if (window.innerWidth < 768 && $(".header-flex").hasClass("left")) {
       bgSize = "cover";
       paddingVal = "10px";
@@ -262,8 +245,8 @@ function updateCalendarStates(month, year) {
     });
     togglePopup();
   });
-  
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const yearElement = document.getElementById("current-year");

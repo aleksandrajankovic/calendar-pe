@@ -601,8 +601,8 @@ p {
 .calendar-title {
   font-style: italic;
   font-weight: 900;
-  font-size: 70px;
-  line-height: 72px;
+  font-size: 60px;
+  line-height: 62px;
   color: #fff;
   font-family: "Gotham Narrow", sans-serif;
   letter-spacing: 1.5px;
@@ -660,7 +660,7 @@ p {
   background-image: url(../images/Desk-bg.png);
   background-position: center;
   position: relative;
-  padding-bottom: 50px;
+  padding-bottom: 130px;
 }
 .slider-wrapper {
   width: 60%;
@@ -931,7 +931,7 @@ i {
 }
 .header-flex {
   display: flex;
-  padding: 50px 20px;
+  padding: 40px 20px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
