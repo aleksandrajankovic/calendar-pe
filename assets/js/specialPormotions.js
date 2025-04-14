@@ -16,6 +16,7 @@ const specialPromotions = {
       title: "Juega s/50 y gana el 100% de bono",
       subtitle: "DEPOSITA, JUEGA Y GANA S/50 EN BONO PARA PRAGMATIC Y EXPANSE!",
       image: "./assets/images/header/image6.jpg",
+      headerClass: "left",
       description: [
         "Deposita mínimo s/50",
         "Usa el total de tu depósito en Juegos de slot",
