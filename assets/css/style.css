@@ -959,11 +959,11 @@ i {
 #modal.active.moveOut {
   animation: fadeOut 0.25s ease-in-out;
 }
-.header-flex h6{
- font-family: "Roboto", sans-serif;
- font-size: 14px;
- color: #c1c1e8;
- font-style: italic;
+.header-flex h6 {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #c1c1e8;
+  font-style: italic;
 }
 
 @keyframes fadeIn {
@@ -2026,7 +2026,7 @@ footer {
     font-size: 20px;
     line-height: 55px;
   }
- 
+
   .slider-text1 {
     margin: 130px auto 300px auto;
   }
@@ -2062,8 +2062,15 @@ footer {
     font-size: 0.7rem;
   }
   #calendar {
-        margin: 3rem auto 8rem auto;
-    }
+    margin: 3rem auto 8rem auto;
+  }
+  .header-flex.left h2 {
+    text-align: left !important;
+    width: 60% !important;
+
+    font-size: 20px !important;
+    line-height: 22px !important;
+  }
 }
 
 @media (max-width: 376px) {
