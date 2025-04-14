@@ -209,8 +209,9 @@ function updateCalendarStates(month, year) {
     // Generisanje popup sadržaja sa ispisanim datumom
     const popupContent = `
       <div class="header-flex ${promo.headerClass ? promo.headerClass : ''}">
+      <h6 class="date">${formattedDate}</h6>
         <h2><i>${promo.title}</i></h2>
-        <p>${formattedDate}</p>
+        
       </div>
       <ul class="list-top">
         <h3>${promo.subtitle}</h3>
@@ -243,11 +244,21 @@ function updateCalendarStates(month, year) {
       <a href="${promo.link}" class="promo-link">${promo.button}</a>
     `;
     $("#modal .wrapper .content .box").html(popupContent);
+    let bgSize = "contain";
+    let paddingVal = ""; // podrazumevano, bez paddinga
+    
+    // Ako je uređaj mobilni i element ima klasu 'left'
+    if (window.innerWidth < 768 && $(".header-flex").hasClass("left")) {
+      bgSize = "cover";
+      paddingVal = "10px";
+    }
+    
     $(".header-flex").css({
       "background": `url(${promo.image})`,
-      "background-size": "contain",
+      "background-size": bgSize,
       "background-position": "center",
       "background-repeat": "no-repeat",
+      "padding": paddingVal,
     });
     togglePopup();
   });

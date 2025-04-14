@@ -931,13 +931,10 @@ i {
 }
 .header-flex {
   display: flex;
-  background-image: url(../images/header/general-bg.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 50px 20px;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 .header-flex.left {
   align-items: start;
@@ -961,6 +958,12 @@ i {
 
 #modal.active.moveOut {
   animation: fadeOut 0.25s ease-in-out;
+}
+.header-flex h6{
+ font-family: "Roboto", sans-serif;
+ font-size: 14px;
+ color: #c1c1e8;
+ font-style: italic;
 }
 
 @keyframes fadeIn {
