@@ -108,7 +108,16 @@ p {
   color: #121212;
   margin: 0px;
 }
-
+.bg-gradient-vip {
+  background-image: linear-gradient(
+    180deg,
+    #fcf5a3 0%,
+    #f3e189 25%,
+    #e9cc6e 50%,
+    #bc9d63 75%,
+    #6b5636 100%
+  );
+}
 .bg_cover {
   background-position: center center;
   background-size: cover;

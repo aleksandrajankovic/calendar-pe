@@ -1,3 +1,40 @@
+window.onload = () => {
+  document.body.classList.add("overflow-hidden");
+  const preloader = document.getElementById("preloader");
+  const wrapper = document.querySelector(".wrapper");
+  const header= document.querySelector(".navbar-area")
+
+  wrapper.style.visibility = "visible";
+
+  setTimeout(() => {
+    // Fade out preloader i istovremeno fade in wrapper
+    preloader.classList.remove("opacity-100");
+    preloader.classList.add("opacity-0", "pointer-events-none");
+    
+    // Pokreni fade-in wrapper odmah
+    wrapper.classList.remove("opacity-0");
+    wrapper.classList.add("opacity-100");
+    
+    preloader.addEventListener("transitionend", () => {
+      preloader.style.display = "none";
+      header.classList.remove("hidden"); 
+      document.body.classList.remove("overflow-hidden");
+    });
+  }, 2000);
+  const today = new Date();
+  const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+  
+  
+    if (currentMonth === 3) {
+      currentImageIndex = 8;
+    } else {
+      currentImageIndex = 0;
+    }
+  
+    generateCalendar(currentMonth, currentYear);
+};
+
 import promotions from "./promotions.js";
 import specialPromotions from "./specialPormotions.js";
 
@@ -21,25 +58,13 @@ const giftImages = [
 ];
 
 
+
 const promotionStartDate = new Date(2025, 3, 15);
 const promotionEndDate = new Date(2025, 4, 4);
 
 
 let currentImageIndex = 0;
-window.onload = function () {
-  const today = new Date(2025,3,30);
-const currentMonth = today.getMonth();
-  const currentYear = today.getFullYear();
 
-
-  if (currentMonth === 3) {
-    currentImageIndex = 8;
-  } else {
-    currentImageIndex = 0;
-  }
-
-  generateCalendar(currentMonth, currentYear);
-};
 
 function generateCalendar(month, year) {
   const calendarWeeksContainer = document.getElementById("calendar-weeks");
@@ -125,10 +150,9 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 }
 
 function updateCalendarStates(month, year) {
-  // Resetujemo currentImageIndex pre obrade dani u kalendaru
   currentImageIndex = 0;
 
-  const today = new Date(2025, 3, 30); 
+  const today = new Date(); 
   const target = $("#calendar .week .day");
 
   target.each(function () {
@@ -156,7 +180,7 @@ function updateCalendarStates(month, year) {
     if (promo) {
       if (giftElement.find(".surprise").html().trim() !== "") {
         giftElement.addClass("gift-open");
-        // Dodeljujemo ikonicu iz niza giftImages redom
+
         if (currentImageIndex < giftImages.length) {
           const currentImage = giftImages[currentImageIndex];
           giftElement.css({
@@ -165,7 +189,7 @@ function updateCalendarStates(month, year) {
             "background-size": "contain",
             "background-position": "center",
           });
-          currentImageIndex++;  // Povećavamo brojač za sledeću ikonicu
+          currentImageIndex++; 
         }
       }
       giftElement.data("promo", promo);
