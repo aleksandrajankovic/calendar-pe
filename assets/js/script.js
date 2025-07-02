@@ -2,37 +2,34 @@ window.onload = () => {
   document.body.classList.add("overflow-hidden");
   const preloader = document.getElementById("preloader");
   const wrapper = document.querySelector(".wrapper");
-  const header= document.querySelector(".navbar-area")
+  const header = document.querySelector(".navbar-area");
 
   wrapper.style.visibility = "visible";
 
   setTimeout(() => {
-    // Fade out preloader i istovremeno fade in wrapper
     preloader.classList.remove("opacity-100");
     preloader.classList.add("opacity-0", "pointer-events-none");
-    
-    // Pokreni fade-in wrapper odmah
+
     wrapper.classList.remove("opacity-0");
     wrapper.classList.add("opacity-100");
-    
+
     preloader.addEventListener("transitionend", () => {
       preloader.style.display = "none";
-      header.classList.remove("hidden"); 
+      header.classList.remove("hidden");
       document.body.classList.remove("overflow-hidden");
     });
   }, 2000);
-  const today = new Date();
+  const today = new Date(2025,6,31);
   const currentMonth = today.getMonth();
-    const currentYear = today.getFullYear();
-  
-  
-    if (currentMonth === 3) {
-      currentImageIndex = 8;
-    } else {
-      currentImageIndex = 0;
-    }
-  
-    generateCalendar(currentMonth, currentYear);
+  const currentYear = today.getFullYear();
+
+  if (currentMonth === 3) {
+    currentImageIndex = 8;
+  } else {
+    currentImageIndex = 0;
+  }
+
+  generateCalendar(currentMonth, currentYear);
 };
 
 import promotions from "./promotions.js";
@@ -55,26 +52,41 @@ const giftImages = [
   "img/icon14.png",
   "img/icon15.png",
   "img/icon16.png",
+  "img/icon17.png",
+  "img/icon18.png",
+  "img/icon19.png",
+  "img/icon20.png",
+  "img/icon21.png",
+  "img/icon22.png",
+  "img/icon23.png",
+  "img/icon24.png",
+  "img/icon25.png",
+  "img/icon26.png",
+  "img/icon27.png",
+  "img/icon28.png",
+  "img/icon29.png",
+  "img/icon30.png",
+  "img/icon31.png",
+  "img/icon32.png",
+  "img/icon33.png",
+  "img/icon34.png",
+  "img/icon35.png",
+  "img/icon36.png",
 ];
 
-
-
-const promotionStartDate = new Date(2025, 3, 15);
-const promotionEndDate = new Date(2025, 4, 4);
-
+const promotionStartDate = new Date(2025, 6, 1);
+const promotionEndDate = new Date(2025, 7, 1);
 
 let currentImageIndex = 0;
 
-
 function generateCalendar(month, year) {
   const calendarWeeksContainer = document.getElementById("calendar-weeks");
- 
+
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const firstDay = new Date(year, month, 1).getDay();
   const startDay = firstDay === 0 ? 7 : firstDay;
 
   let weekHtml = '<div class="week">';
-
 
   for (let i = 1; i < startDay; i++) {
     weekHtml += '<div class="day noDate"></div>';
@@ -93,7 +105,6 @@ function generateCalendar(month, year) {
       weekHtml += '</div><div class="week">';
     }
   }
-  
 
   const remainingCells = (startDay + daysInMonth - 1) % 7;
   if (remainingCells !== 0) {
@@ -131,18 +142,17 @@ function togglePopup() {
 }
 window.togglePopup = togglePopup;
 
-
 function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
   if (date < promotionStartDate || date >= promotionEndDate) {
     return null;
   }
-  
+
   if (date.getFullYear() === 2025 && date.getMonth() === 3) {
     if (date.getDate() === 26 || date.getDate() === 27) {
       return specialPromotions[date.getDate()];
     }
   }
-  
+
   let day = date.getDay();
   if (day === 0) day = 7;
   const index = day - 1;
@@ -152,7 +162,7 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 function updateCalendarStates(month, year) {
   currentImageIndex = 0;
 
-  const today = new Date(); 
+  const today = new Date(2025,6,31);
   const target = $("#calendar .week .day");
 
   target.each(function () {
@@ -176,7 +186,11 @@ function updateCalendarStates(month, year) {
       return;
     }
 
-    const promo = getPromotionForDate(cellDate, promotionStartDate, promotionEndDate);
+    const promo = getPromotionForDate(
+      cellDate,
+      promotionStartDate,
+      promotionEndDate
+    );
     if (promo) {
       if (giftElement.find(".surprise").html().trim() !== "") {
         giftElement.addClass("gift-open");
@@ -189,7 +203,7 @@ function updateCalendarStates(month, year) {
             "background-size": "contain",
             "background-position": "center",
           });
-          currentImageIndex++; 
+          currentImageIndex++;
         }
       }
       giftElement.data("promo", promo);
@@ -208,20 +222,24 @@ function updateCalendarStates(month, year) {
       console.log("Nema promocije za ovaj dan.");
       return;
     }
-    
+
     const dayNumber = $(this).data("day");
     const monthNumber = $(this).data("month");
     const yearNumber = $(this).data("year");
     const cellDate = new Date(yearNumber, monthNumber, dayNumber);
-    const formattedDate = cellDate.toLocaleDateString("sr-RS", { day: "numeric", month: "numeric", year: "numeric" });
-    
+    const formattedDate = cellDate.toLocaleDateString("sr-RS", {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+
     const popupContent = `
-      <div class="header-flex ${promo.headerClass ? promo.headerClass : ''}">
-        <h6 class="date">${formattedDate}</h6>
-        <h2><i>${promo.title}</i></h2>
+      <div class="header-flex">
+     
       </div>
       <ul class="list-top">
-        <h3>${promo.subtitle}</h3>
+       <h6 class="date">${formattedDate}</h6>
+        <h2><i>${promo.title}</i></h2>
         ${promo.description
           .map((item, index) => {
             if (index === promo.description.length - 1) {
@@ -233,7 +251,9 @@ function updateCalendarStates(month, year) {
                 ${
                   promo.description1
                     ? `<ul class="sub-list">
-                         ${promo.description1.map(subItem => `<li>${subItem}</li>`).join('')}
+                         ${promo.description1
+                           .map((subItem) => `<li>${subItem}</li>`)
+                           .join("")}
                        </ul>`
                     : ""
                 }
@@ -250,27 +270,26 @@ function updateCalendarStates(month, year) {
       </ul>
       <a href="${promo.link}" class="promo-link">${promo.button}</a>
     `;
-    
+
     $("#modal .wrapper .content .box").html(popupContent);
     let bgSize = "cover";
     let paddingVal = "";
-    
+
     if (window.innerWidth < 768 && $(".header-flex").hasClass("left")) {
       bgSize = "cover";
       paddingVal = "10px";
     }
-    
+
     $(".header-flex").css({
-      "background": `url(${promo.image})`,
+      background: `url(${promo.image})`,
       "background-size": bgSize,
       "background-position": "center",
       "background-repeat": "no-repeat",
-      "padding": paddingVal,
+      padding: paddingVal,
     });
     togglePopup();
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const yearElement = document.getElementById("current-year");
