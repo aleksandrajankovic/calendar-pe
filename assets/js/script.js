@@ -19,7 +19,7 @@ window.onload = () => {
       document.body.classList.remove("overflow-hidden");
     });
   }, 2000);
-  const today = new Date(2025,6,31);
+  const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
 
@@ -162,7 +162,7 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 function updateCalendarStates(month, year) {
   currentImageIndex = 0;
 
-  const today = new Date(2025,6,31);
+  const today = new Date();
   const target = $("#calendar .week .day");
 
   target.each(function () {

@@ -6,12 +6,11 @@ const promotions = [
     image: "./assets/images/header/image1.png",
     headerClass: "left",
     description: [
-      "Você receberá o cashback com base no valor perdido na semana (de terça-feira 00:00:01 até segunda feira 23:59:59)",
-      "De R$ 50 a R$ 500: 2% de cashback ",
-      "De R$ 501 a R$ 1000: 4% de cashback",
-      "De R$ 1001 a R$ 2000: 6% de cashback",
-      "De R$ 2001 a R$ 5000: 8% de cashback",
-      "Acima de R$ 5001: 10% de cashback",
+      "Você receberá o cashback com base no valor perdido na semana (de segunda-feira 00:00:01 até domingo 23:59:59)",
+      "De R$ 100 a R$ 500: 5% de cashback ",
+      "De R$ 501 a R$ 2000: 10% de cashback",
+      "De R$ 2001 a R$ 5000: 15% de cashback",
+      "Acima de 5001: 20% de cashback",
       "Valor máximo para receber em cashback: R$ 2000,00",
       "Rejogo necessário: 25x",
      
