@@ -26,8 +26,8 @@ window.onload = () => {
     const currentYear = today.getFullYear();
   
   
-    if (currentMonth === 3) {
-      currentImageIndex = 8;
+    if (currentMonth === 7) {
+      currentImageIndex = 3;
     } else {
       currentImageIndex = 0;
     }
@@ -59,8 +59,8 @@ const giftImages = [
 
 
 
-const promotionStartDate = new Date(2025, 3, 15);
-const promotionEndDate = new Date(2025, 4, 4);
+const promotionStartDate = new Date(2025, 7, 1);
+const promotionEndDate = new Date(2025, 7, 16);
 
 
 let currentImageIndex = 0;
@@ -150,7 +150,7 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 }
 
 function updateCalendarStates(month, year) {
-  currentImageIndex = 0;
+  currentImageIndex = 3;
 
   const today = new Date(); 
   const target = $("#calendar .week .day");
