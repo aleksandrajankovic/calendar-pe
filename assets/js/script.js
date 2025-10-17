@@ -160,7 +160,7 @@ function getPromotionForDate(date, promotionStartDate, promotionEndDate) {
 }
 
 function updateCalendarStates(month, year) {
-  currentImageIndex = 0;
+  currentImageIndex = 1;
 
   const today = new Date();
   const target = $("#calendar .week .day");
