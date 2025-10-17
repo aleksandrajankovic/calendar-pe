@@ -36,13 +36,13 @@ import promotions from "./promotions.js";
 import specialPromotions from "./specialPormotions.js";
 
 const giftImages = [
-  "img/icon1.png",
-  "img/icon2.png",
-  "img/icon3.png",
-  "img/icon4.png",
-  "img/icon5.png",
-  "img/icon6.png",
-  "img/icon7.png",
+  "./img/icon1.png",
+  "./img/icon2.png",
+  "./img/icon3.png",
+  "./img/icon4.png",
+  "./img/icon5.png",
+  "./img/icon6.png",
+  "./img/icon7.png",
   "img/icon8.png",
   "img/icon9.png",
   "img/icon10.png",
