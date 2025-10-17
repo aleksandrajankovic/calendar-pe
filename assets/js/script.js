@@ -24,7 +24,7 @@ window.onload = () => {
   const currentYear = today.getFullYear();
 
   if (currentMonth === 9) {
-    currentImageIndex = 3;
+    currentImageIndex = 2;
   } else {
     currentImageIndex = 0;
   }
